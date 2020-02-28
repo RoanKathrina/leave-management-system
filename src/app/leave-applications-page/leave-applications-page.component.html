@@ -8,10 +8,10 @@
     <th class="TableHeader">To Date</th>
     <th class="TableHeader">Number of Day/s</th>
     <th class="TableHeader">Reason</th>
-    <th class="TableHeader">Action</th>
-
+    <th class="TableHeader">Approve</th>
+    <th class="TableHeader">Reject</th>
   </tr>
-  <tr *ngFor="let leave of leaves.leaves">
+  <tr *ngFor="let leave of leaves.leaves; let i = index">
     <td class="TableCell">{{leave.first_name}}</td>
     <td class="TableCell">{{leave.last_name}}</td>
     <td class="TableCell">{{leave.type_of_leave}}</td>
@@ -19,12 +19,14 @@
     <td class="TableCell">{{leave.to_date}}</td>
     <td class="TableCell">{{leave.number_of_days}}</td>
     <td class="TableCell">{{leave.reason}}</td>
-    <td style="display: flex; border: none">
-      <div (click)="approveLeave()">
-        <img src="https://www.freeiconspng.com/uploads/check-mark-icon-green-0.png" style="height: 50px; margin-left: 30px;">
+    <td>
+      <div (click)="approveLeave(leave, i)" style="cursor: pointer">
+        <img src="https://www.freeiconspng.com/uploads/check-mark-icon-green-0.png" style="height: 50px; margin-left: 50px;">
       </div>
-      <div>
-        <img src="https://www.iconsdb.com/icons/preview/red/x-mark-xxl.png" style="height: 50px; margin-left: 10px">
+    </td>
+    <td>
+      <div (click)="rejectLeave()" style="cursor: pointer">
+        <img src="https://www.iconsdb.com/icons/preview/red/x-mark-xxl.png" style="height: 50px; margin-left: 50px;">
       </div>
     </td>
   </tr>
