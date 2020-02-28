@@ -1,15 +1,32 @@
 <h1 style="margin-left: 20px;"> Leave Application/s of FS Bench Members</h1>
 <table style="border-collapse: collapse; margin: 20px">
   <tr>
-    <th style="font-size: 24px;">First Name</th>
-    <th style="font-size: 24px;">Last Name</th>
-    <th style="font-size: 24px;">Type of Leave</th>
-    <th style="font-size: 24px;">From Date</th>
-    <th style="font-size: 24px;">To Date</th>
-    <th style="font-size: 24px;">Number of Day/s</th>
-    <th style="font-size: 24px;">Reason</th>
+    <th class="TableHeader">First Name</th>
+    <th class="TableHeader">Last Name</th>
+    <th class="TableHeader">Type of Leave</th>
+    <th class="TableHeader">From Date</th>
+    <th class="TableHeader">To Date</th>
+    <th class="TableHeader">Number of Day/s</th>
+    <th class="TableHeader">Reason</th>
+    <th class="TableHeader">Action</th>
 
-
+  </tr>
+  <tr *ngFor="let leave of leaves.leaves">
+    <td class="TableCell">{{leave.first_name}}</td>
+    <td class="TableCell">{{leave.last_name}}</td>
+    <td class="TableCell">{{leave.type_of_leave}}</td>
+    <td class="TableCell">{{leave.from_date}}</td>
+    <td class="TableCell">{{leave.to_date}}</td>
+    <td class="TableCell">{{leave.number_of_days}}</td>
+    <td class="TableCell">{{leave.reason}}</td>
+    <td style="display: flex; border: none">
+      <div (click)="approveLeave()">
+        <img src="https://www.freeiconspng.com/uploads/check-mark-icon-green-0.png" style="height: 50px; margin-left: 30px;">
+      </div>
+      <div>
+        <img src="https://www.iconsdb.com/icons/preview/red/x-mark-xxl.png" style="height: 50px; margin-left: 10px">
+      </div>
+    </td>
   </tr>
   
 </table>

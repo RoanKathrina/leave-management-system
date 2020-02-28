@@ -1,3 +1,15 @@
 table, th, td {
   border: 3px solid black;
 }
+
+.TableHeader {
+  font-size: 24px; 
+  width: 200px; 
+  background-color: #ff8c00; 
+  color: white;
+}
+
+.TableCell {
+ font-size: 18px; 
+ text-align: center;
+}

@@ -1,3 +1,20 @@
 a:hover {
   text-decoration: underline;
 }
+
+.SideDrawer {
+  background-color: rgb(265, 155, 0, 0.3); 
+  height: 1900px; 
+  width: 500px;
+  animation: 0.5s slidein-left; 
+}
+
+@keyframes slidein-left {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+

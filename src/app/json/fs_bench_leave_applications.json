@@ -7,7 +7,17 @@
       "from_date": "March 02, 2020",
       "to_date": "March 03, 2020",
       "number_of_days": 2,
-      "reason": "rest"
+      "reason": "Rest"
+    },
+    {
+      "first_name": "Roan Kathrina",
+      "last_name": "Dimaculangan",
+      "type_of_leave": "vacation",
+      "from_date": "April 01, 2020",
+      "to_date": "April 03, 2020",
+      "number_of_days": 3,
+      "reason": "Vacation with the Family"
     }
+
   ]
 }
