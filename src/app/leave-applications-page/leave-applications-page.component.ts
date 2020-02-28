@@ -54,7 +54,7 @@ export class LeaveApplicationsPageComponent implements OnInit {
           ],
           "rejected": []
         }
-
+        console.log(JSONLeaves);
         window.sessionStorage.setItem(name, JSON.stringify(JSONLeaves));
         this.leaves.leaves.splice(position, 1);
         window.sessionStorage.setItem('leaves', JSON.stringify(this.leaves));
@@ -113,6 +113,7 @@ export class LeaveApplicationsPageComponent implements OnInit {
             }
           ]
         }
+        console.log(JSONLeaves);
         window.sessionStorage.setItem(name, JSON.stringify(JSONLeaves));
         this.leaves.leaves.splice(position, 1);
         window.sessionStorage.setItem('leaves', JSON.stringify(this.leaves));
@@ -135,7 +136,7 @@ export class LeaveApplicationsPageComponent implements OnInit {
             }
           ]
         }
-
+        console.log(JSONLeaves);
         window.sessionStorage.setItem(name, JSON.stringify(JSONLeaves));
         this.leaves.leaves.splice(position, 1);
         window.sessionStorage.setItem('leaves', JSON.stringify(this.leaves));
