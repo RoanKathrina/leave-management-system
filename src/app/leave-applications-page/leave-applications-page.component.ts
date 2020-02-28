@@ -18,6 +18,7 @@ export class LeaveApplicationsPageComponent implements OnInit {
     }
 
     else {
+      console.log(window.sessionStorage.getItem('leaves'));
       this.leaves = JSON.parse(window.sessionStorage.getItem('leaves'));
     }
   }
