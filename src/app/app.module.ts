@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { AppService } from './app.service';
+import { LeaveManagementSystemPageComponent } from './leave-management-system-page/leave-management-system-page.component';
+import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+import { LeaveApplicationsPageComponent } from './leave-applications-page/leave-applications-page.component';
 
 @NgModule({
   imports:      [
@@ -13,7 +17,10 @@ import { LoginPageComponent } from './login-page/login-page.component';
                   AppRoutingModule,
                   ReactiveFormsModule
                 ],
-  declarations: [ AppComponent, LoginPageComponent ],
+  declarations: [ AppComponent, LoginPageComponent, LeaveManagementSystemPageComponent, SignUpPageComponent, LeaveApplicationsPageComponent ],
+  providers: [
+              AppService
+  ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

@@ -6,20 +6,22 @@
     </div>
   </div>
   <div style="height: 300px; margin-top: 70px;">
-    <div style="height: 500px; background-color: #ff8c00; margin-left: 50px; margin-right: 1000px; border-radius: 20px; text-align: center">
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div style="height: 610px; background-color: #ff8c00; margin-left: 50px; margin-right: 1000px; border-radius: 20px; text-align: center">
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
         <h1 style="padding-top: 30px; color: white">Username:</h1>
         <input style="height: 50px; width: 500px; border: none; border-radius: 20px; margin-top: -20px" formControlName="username" type="text">
         <h1 style="color: white">Password:</h1>
         <input style="height: 50px; width: 500px; border: none; border-radius: 20px; margin-top: -20px" formControlName="password" type="password">
+        <h1 style="color: white">Confirm Password:</h1>
+        <input style="height: 50px; width: 500px; border: none; border-radius: 20px; margin-top: -20px" formControlName="confirmPassword" type="password">
         <br />
         <br />
-        <button style="height: 60px; width: 300px; background-color: lightyellow; border: none; border-radius: 20px; font-size: 36px; font-weight: bold" type="submit">LOGIN</button>
+        <button style="height: 60px; width: 300px; background-color: lightyellow; border: none; border-radius: 20px; font-size: 36px; font-weight: bold" type="submit">SIGN UP</button>
         <br />
         <br />
         <br />
-        <h3 style="color: white">Not yet a member?</h3>    
-        <button style="height: 60px; width: 300px; background-color: lightyellow; border: none; border-radius: 20px; font-size: 36px; font-weight: bold" type="button" (click)="goToSignUpPage()">SIGN IN</button>        
+        <h3 style="color: white">Already a member?</h3>    
+        <button style="height: 60px; width: 300px; background-color: lightyellow; border: none; border-radius: 20px; font-size: 36px; font-weight: bold" type="button" (click)="goToLoginPage()">LOGIN</button>        
       </form>
     </div>
   </div>

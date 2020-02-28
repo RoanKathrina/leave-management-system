@@ -1,0 +1,44 @@
+<div style="background-color: white; height: 2000px;">
+  <div style="background-color: #ff8c00; height: 100px; display: flex; justify-content: space-between">
+    <div style="display: flex; margin-left: 20px;">
+      <img src="https://www.pngjoy.com/pngl/131/2663889_group-of-people-icon-avatar-group-icon-png.png" style="height: 100px;">
+      <h1 style="margin-left: 20px; color: white; font-size: 42px;">Leave Management System</h1>
+    </div>
+    <div style="margin-right: 20px;" tappable (click)="toggleSideDrawer()">
+      <img src="https://cdn.icon-icons.com/icons2/916/PNG/512/Menu_icon_icon-icons.com_71858.png" style="height: 100px;">
+    </div>
+  </div>
+
+  <div style="display: flex">
+    <ng-container *ngIf="showSideDrawer">
+      <div style="background-color: rgb(265, 155, 0, 0.3); height: 1900px; width: 500px;">
+        <div style="display: flex; margin-left: 50px; cursor: pointer" tappable (click)="setMenuOption('leave_applications')">
+          <img src="https://png.pngtree.com/svg/20161229/application_for_leave_729847.png" style="height: 100px">
+          <h1><a>Leave Applications</a></h1>
+        </div>
+      
+        <div style="display: flex; margin-left: 50px; cursor: pointer" (click)="setMenuOption('apply_leave')">
+          <img src="https://icons-for-free.com/iconfiles/png/512/leave+logout+signout+icon-1320183183841309817.png" style="height: 100px">
+          <h1><a>Apply Leave</a></h1>
+        </div>
+
+        <div style="display: flex; margin-left: 50px; cursor: pointer" (click)="setMenuOption('leave_application_status')">
+          <img src="https://cdn2.iconfinder.com/data/icons/project-management-8/500/Approval-2-512.png" style="height: 100px">
+          <h1 style="overflow-wrap: break-word; width: 300px"><a>Leave Application Status</a></h1>
+        </div>
+
+        <div style="display: flex; margin-left: 60px; cursor: pointer" (click)="setMenuOption('log_out');">
+          <img src="https://i.ya-webdesign.com/images/tech-buttons-png-3.png" style="height: 60px;">
+          <h1 style="margin-left: 30px"><a>Log Out</a></h1>
+        </div>
+      </div>
+    </ng-container>
+
+    <div style="background-color: white; height: 1900px; width: 1400px; margin-left: 0px">
+      <div *ngIf="showSideDrawer && menuOption == 'leave_applications'">
+        <app-leave-applications-page></app-leave-applications-page>
+      </div>
+    </div>
+  </div>
+
+</div>
