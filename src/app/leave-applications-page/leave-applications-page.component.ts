@@ -18,7 +18,7 @@ export class LeaveApplicationsPageComponent implements OnInit {
     }
 
     else {
-      console.log(window.sessionStorage.getItem('leaves'));
+      console.log(JSON.parse(window.sessionStorage.getItem('leaves')));
       this.leaves = JSON.parse(window.sessionStorage.getItem('leaves'));
     }
   }
@@ -56,7 +56,7 @@ export class LeaveApplicationsPageComponent implements OnInit {
 
         window.sessionStorage.setItem(name, JSON.stringify(JSONLeaves));
         this.leaves.leaves.splice(position, 1);
-        window.sessionStorage.setItem('leaves', this.leaves);
+        window.sessionStorage.setItem('leaves', JSON.stringify(this.leaves));
       }
 
       else {
@@ -80,7 +80,7 @@ export class LeaveApplicationsPageComponent implements OnInit {
         console.log(JSONLeaves);
         window.sessionStorage.setItem(name, JSON.stringify(JSONLeaves));
         this.leaves.leaves.splice(position, 1);
-        window.sessionStorage.setItem('leaves', this.leaves);
+        window.sessionStorage.setItem('leaves', JSON.stringify(this.leaves));
       }
 
 
