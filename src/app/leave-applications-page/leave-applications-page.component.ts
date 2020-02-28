@@ -38,6 +38,7 @@ export class LeaveApplicationsPageComponent implements OnInit {
     else {
       let JSONLeaves;
       let name = (element.first_name.replace(/ /g,"_") + '_' + element.last_name.replace(/ /g,"_")).toLowerCase();
+      console.log(name);
       if (window.sessionStorage.getItem(name) === null) {
         JSONLeaves = {
           "approved": [
@@ -82,8 +83,63 @@ export class LeaveApplicationsPageComponent implements OnInit {
         this.leaves.leaves.splice(position, 1);
         window.sessionStorage.setItem('leaves', JSON.stringify(this.leaves));
       }
+    }
+  }
 
 
+  rejectLeave(element: any, position: number) {
+    const confirmRes = window.confirm(`Are you sure you want to reject member: ${element.first_name} ${element.last_name} to have ${element.type_of_leave} leave?`);
+    if(confirmRes === false) {
+      return;
+    }
+    else {
+      // Add the leave application to Rejected Entry
+      // Delete leave application
+      let JSONLeaves;
+      const name = (element.first_name.replace(/ /g,"_") + '_' + element.last_name.replace(/ /g,"_")).toLowerCase();
+      if(window.sessionStorage.getItem(name) === null)
+      {
+        JSONLeaves = {
+          "approved": [],
+          "rejected": [
+            {
+              "first_name": element.first_name,
+              "last_name": element.last_name,
+              "type_of_leave": element.type_of_leave,
+              "from_date": element.from_date,
+              "to_date": element.to_date,
+              "number_of_days": element.number_of_days,
+              "reason": element.reason
+            }
+          ]
+        }
+        window.sessionStorage.setItem(name, JSON.stringify(JSONLeaves));
+        this.leaves.leaves.splice(position, 1);
+        window.sessionStorage.setItem('leaves', JSON.stringify(this.leaves));
+      }
+      else {
+        JSONLeaves = {
+          "approved": [
+            ...JSON.parse(window.sessionStorage.getItem(name)).approved
+          ],
+          "rejected": [
+            ...JSON.parse(window.sessionStorage.getItem(name)).rejected,
+            {
+              "first_name": element.first_name,
+              "last_name": element.last_name,
+              "type_of_leave": element.type_of_leave,
+              "from_date": element.from_date,
+              "to_date": element.to_date,
+              "number_of_days": element.number_of_days,
+              "reason": element.reason
+            }
+          ]
+        }
+
+        window.sessionStorage.setItem(name, JSON.stringify(JSONLeaves));
+        this.leaves.leaves.splice(position, 1);
+        window.sessionStorage.setItem('leaves', JSON.stringify(this.leaves));
+      }
     }
   }
 }
