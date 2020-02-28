@@ -1,0 +1,21 @@
+<h1 style="margin-left: 20px">New Leave Request</h1>
+<form [formGroup]="applyLeaveForm" (ngSubmit)="onSubmit()">
+  <div style="display: inline-flex">
+    <h1 style="font-size: 24px; margin-left: 20px;">First Name</h1>
+    <input style="margin-left: 50px; width: 500px; height: 50px; border-radius: 20px; border: 1px solid black" formControlName="firstName">
+  </div>
+
+  <div style="display: inline-flex">
+    <h1 style="font-size: 24px; margin-left: 25px;">Last Name</h1>
+    <input style="margin-left: 50px; width: 500px; height: 50px; border-radius: 20px; border: 1px solid black" formControlName="lastName">
+  </div>
+
+  <br />
+  <div style="display: inline-flex">
+    <h1 style="font-size: 24px; margin-left: 25px;">Type of Leave</h1>
+    <select formControlName="typeOfLeave" style="margin-left: 20px; width: 400px; font-size: 24px;">
+      <option [value]="country" *ngFor="let leave of type_of_leave">{{leave}}</option>
+    </select>
+  </div>
+</form>
+

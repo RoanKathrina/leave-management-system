@@ -9,6 +9,7 @@ import { AppService } from './app.service';
 import { LeaveManagementSystemPageComponent } from './leave-management-system-page/leave-management-system-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { LeaveApplicationsPageComponent } from './leave-applications-page/leave-applications-page.component';
+import { ApplyLeavePageComponent } from './apply-leave-page/apply-leave-page.component';
 
 @NgModule({
   imports:      [
@@ -17,7 +18,7 @@ import { LeaveApplicationsPageComponent } from './leave-applications-page/leave-
                   AppRoutingModule,
                   ReactiveFormsModule
                 ],
-  declarations: [ AppComponent, LoginPageComponent, LeaveManagementSystemPageComponent, SignUpPageComponent, LeaveApplicationsPageComponent ],
+  declarations: [ AppComponent, LoginPageComponent, LeaveManagementSystemPageComponent, SignUpPageComponent, LeaveApplicationsPageComponent, ApplyLeavePageComponent ],
   providers: [
               AppService
   ],
