@@ -30,7 +30,8 @@ export class ApplyLeavePageComponent implements OnInit {
       'toMonth': new FormControl(this.months[0], Validators.required),
       'toDay': new FormControl('1', Validators.required),
       'toYear': new FormControl(this.years[0], Validators.required),
-      'numberOfDays': new FormControl(null)
+      'numberOfDays': new FormControl(null),
+      'reasonOfLeave': new FormControl(null, Validators.required)
     })
   }
   onSubmit() {
@@ -45,6 +46,8 @@ export class ApplyLeavePageComponent implements OnInit {
     const secondDate = new Date(parseInt(this.applyLeaveForm.get('fromYear').value), parseInt(this.applyLeaveForm.get('fromMonth').value), parseInt(this.applyLeaveForm.get('fromDay').value)); // From Date
     const diffDays = Math.abs((firstDate.valueOf() - secondDate.valueOf())/(24*60*60*1000)) + 1;; 
     //Math.floor(firstDate.getTime() / (3600 * 24 * 1000)) - Math.floor(secondDate.getTime() / (3600 * 24 * 1000)) + 1;
-    console.log(diffDays);
+    this.applyLeaveForm.patchValue({
+      'numberOfDays': diffDays
+    })
   }
 }
