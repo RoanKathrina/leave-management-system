@@ -6,14 +6,26 @@
     </div>
   </div>
   <div style="height: 300px; margin-top: 70px;">
-    <div style="height: 610px; background-color: #ff8c00; margin-left: 50px; margin-right: 1000px; border-radius: 20px; text-align: center">
+    <div style="height: auto; background-color: #ff8c00; margin-left: 50px; margin-right: 1000px; border-radius: 20px; text-align: center">
       <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
         <h1 style="padding-top: 30px; color: white">Username:</h1>
         <input style="height: 50px; width: 500px; border: none; border-radius: 20px; margin-top: -20px" formControlName="username" type="text">
+        <br />
+        <span *ngIf="(!signUpForm.get('username').valid && signUpForm.get('username').touched) || (!signUpForm.get('username').valid && signUpFormSubmitted)" 
+        style="margin-left: 20px; color: red; font-size: 24px; font-style: italic; font-weight: bold">* Kindly input Username.</span>
+        
         <h1 style="color: white">Password:</h1>
         <input style="height: 50px; width: 500px; border: none; border-radius: 20px; margin-top: -20px" formControlName="password" type="password">
+        <br />
+        <span *ngIf="(!signUpForm.get('password').valid && signUpForm.get('password').touched) || (!signUpForm.get('password').valid && signUpFormSubmitted)" 
+        style="margin-left: 20px; color: red; font-size: 24px; font-style: italic; font-weight: bold">* Kindly input Password.</span>
+
         <h1 style="color: white">Confirm Password:</h1>
         <input style="height: 50px; width: 500px; border: none; border-radius: 20px; margin-top: -20px" formControlName="confirmPassword" type="password">
+        <br />
+        <span *ngIf="(!signUpForm.get('confirmPassword').valid && signUpForm.get('confirmPassword').touched) || (!signUpForm.get('confirmPassword').valid && signUpFormSubmitted)" 
+        style="margin-left: 20px; color: red; font-size: 24px; font-style: italic; font-weight: bold">* Kindly input Confirm Password.</span>
+        
         <br />
         <br />
         <button style="height: 60px; width: 300px; background-color: lightyellow; border: none; border-radius: 20px; font-size: 36px; font-weight: bold" type="submit">SIGN UP</button>
@@ -21,7 +33,7 @@
         <br />
         <br />
         <h3 style="color: white">Already a member?</h3>    
-        <button style="height: 60px; width: 300px; background-color: lightyellow; border: none; border-radius: 20px; font-size: 36px; font-weight: bold" type="button" (click)="goToLoginPage()">LOGIN</button>        
+        <button style="height: 60px; width: 300px; background-color: lightyellow; border: none; border-radius: 20px; font-size: 36px; font-weight: bold; margin-bottom: 20px;" type="button" (click)="goToLoginPage()">LOGIN</button>        
       </form>
     </div>
   </div>

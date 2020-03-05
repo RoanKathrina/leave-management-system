@@ -6,12 +6,20 @@
     </div>
   </div>
   <div style="height: 300px; margin-top: 70px;">
-    <div style="height: 500px; background-color: #ff8c00; margin-left: 50px; margin-right: 1000px; border-radius: 20px; text-align: center">
+    <div style="height: auto; background-color: #ff8c00; margin-left: 50px; margin-right: 1000px; border-radius: 20px; text-align: center">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <h1 style="padding-top: 30px; color: white">Username:</h1>
         <input style="height: 50px; width: 500px; border: none; border-radius: 20px; margin-top: -20px" formControlName="username" type="text">
+        <br />
+        <span *ngIf="(!loginForm.get('username').valid && loginForm.get('username').touched) || (!loginForm.get('username').valid && loginFormSubmitted)" 
+        style="margin-left: 20px; color: red; font-size: 24px; font-style: italic; font-weight: bold">* Kindly input Username.</span>
+     
         <h1 style="color: white">Password:</h1>
         <input style="height: 50px; width: 500px; border: none; border-radius: 20px; margin-top: -20px" formControlName="password" type="password">
+        <br />
+        <span *ngIf="(!loginForm.get('password').valid && loginForm.get('password').touched) || (!loginForm.get('password').valid && loginFormSubmitted)" 
+        style="margin-left: 20px; color: red; font-size: 24px; font-style: italic; font-weight: bold">* Kindly input Password.</span>
+
         <br />
         <br />
         <button style="height: 60px; width: 300px; background-color: lightyellow; border: none; border-radius: 20px; font-size: 36px; font-weight: bold" type="submit">LOGIN</button>
@@ -19,7 +27,7 @@
         <br />
         <br />
         <h3 style="color: white;">Not yet a member?</h3>    
-        <button style="height: 60px; width: 300px; background-color: lightyellow; border: none; border-radius: 20px; font-size: 36px; font-weight: bold" type="button" (click)="goToSignUpPage()">SIGN IN</button>        
+        <button style="height: 60px; width: 300px; background-color: lightyellow; border: none; border-radius: 20px; font-size: 36px; font-weight: bold; margin-bottom: 20px;" type="button" (click)="goToSignUpPage()">SIGN IN</button>        
       </form>
     </div>
   </div>

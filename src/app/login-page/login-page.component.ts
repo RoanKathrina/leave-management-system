@@ -14,6 +14,8 @@ export class LoginPageComponent implements OnInit {
 
   loginForm: FormGroup;
   members = fs_bench_members;
+  loginFormSubmitted: boolean = false;
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private service: AppService) { }
@@ -37,26 +39,18 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit() {
-    const username = this.loginForm.get('username').value;
-    const password = this.loginForm.get('password').value;
-
-    if (username === null || username === '') {
-      window.alert('Error: Kindly input Username.')
-      return;
-    }
-    else if ((username !== null || username !== '') && (password === null || password === '')) {
-      window.alert('Error: Kindly input Password.')
-      return;
-    }
-    else if((username !== null || username !== '') && (password !== null || password !== '')) {
-      // Check if Username, and Password is in fs_bench_members.json
-        // If no, window.alert: "Error: Username, and Password in not found in Leave Management System Database."
-        // If yes,
-            // Check if the Username === "melody_anne_francisco"
-              // If not, log in User
-              // If yes, 
-                // set adminIsLoggedIn = true
-                // Log in
+  // Check if Username, and Password is in fs_bench_members.json
+    // If no, window.alert: "Error: Username, and Password in not found in Leave Management System Database."
+    // If yes,
+        // Check if the Username === "melody_anne_francisco"
+          // If not, log in User
+          // If yes, 
+            // set adminIsLoggedIn = true
+            // Log in
+    this.loginFormSubmitted = true;
+    if (this.loginForm.invalid === false) {
+      const username = this.loginForm.get('username').value;
+      const password = this.loginForm.get('password').value;
 
       let memberFlg = this.members.members.find(item => item.username === username && item.password === password);
       if (memberFlg === undefined) {
@@ -75,6 +69,10 @@ export class LoginPageComponent implements OnInit {
           this.router.navigate(['../leave-management-system-page'], {relativeTo: this.route})
         }
       }
+    }
+    else {
+      window.alert('Error: Kindly correct all Error/s before Logging in.')
+      return;
     }
   }
 

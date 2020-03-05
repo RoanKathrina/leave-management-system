@@ -14,6 +14,7 @@ export class SignUpPageComponent implements OnInit {
 
   signUpForm: FormGroup;
   members = fs_bench_members;
+  signUpFormSubmitted: boolean = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -38,34 +39,24 @@ export class SignUpPageComponent implements OnInit {
   }
 
   onSubmit() {
-    const username = this.signUpForm.get('username').value;
-    const password = this.signUpForm.get('password').value;
-    const confirmPassword = this.signUpForm.get('confirmPassword').value;
-    if(username === null || username === '') {
-      window.alert('Error: Kindly input Username.');
-      return;
-    }
-    else if ((username !== null || username !== '') && (password === null || password === '')) {
-      window.alert('Error: Kindly input Password.');
-      return;
-    }
-    else if ((username !== null || username !== '') && (password !== null || password !== '') && (confirmPassword === null || confirmPassword === '')) {
-      window.alert('Error: Kindly input Confirm Password.');
-      return;
-    }
-    else if ((username !== null || username !== '') && (password !== null || password !== '') && (confirmPassword !== null || confirmPassword !== '')) {
-      // Check if Username already exists in the Leave Management System Database
-        // Username already exists in the Leave Management System Database.
-          // window.alert: Error: Username already exists in the Leave Management Database
-        // Username does not exist in the Leave Management System Database
-          // Password, and Confirm Password are not equal
-            // window.alert: Error: Password, and Confirm Password are not equal
-          // Password, and Confirm Password are equal
-            // Save the new member in the session storage (members)
-            // Go to Leave Management System Page
+    // Check if Username already exists in the Leave Management System Database
+      // Username already exists in the Leave Management System Database.
+        // window.alert: Error: Username already exists in the Leave Management Database
+      // Username does not exist in the Leave Management System Database
+        // Password, and Confirm Password are not equal
+          // window.alert: Error: Password, and Confirm Password are not equal
+        // Password, and Confirm Password are equal
+          // Save the new member in the session storage (members)
+          // Go to Leave Management System Page
+    this.signUpFormSubmitted = true;
+    if(this.signUpForm.invalid === false) {
+      const username = this.signUpForm.get('username').value;
+      const password = this.signUpForm.get('password').value;
+      const confirmPassword = this.signUpForm.get('confirmPassword').value;
+
       let memberFlg = this.members.members.find(item => item.username === username);
       if (memberFlg !== undefined) {
-        // Username already exists in the Leave Managament System Database
+        // Username already exists in the Leave Management System Database
         window.alert('Error: Username already exists in the Leave Management System Database.')
         return;
       }
@@ -86,6 +77,10 @@ export class SignUpPageComponent implements OnInit {
           this.router.navigate(['../leave-management-system-page'], {relativeTo: this.route});
         }
       }
+    }
+    else {
+      window.alert('Error: Kindly correct all Error/s before Signing up.');
+      return;
     }
   }
 
