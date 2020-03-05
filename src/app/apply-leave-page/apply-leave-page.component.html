@@ -4,6 +4,9 @@
     <h1 style="font-size: 24px; margin-left: 20px;">First Name</h1>
     <input style="margin-left: 90px; width: 440px; height: 50px; border-radius: 20px; border: 1px solid black" formControlName="firstName">
   </div>
+  <br />
+  <span *ngIf="(!applyLeaveForm.get('firstName').valid && applyLeaveForm.get('firstName').touched) || (!applyLeaveForm.get('firstName').valid && applyLeaveFormSubmitted)" 
+  style="margin-left: 220px; color: red; font-size: 24px; font-style: italic; font-weight: bold">* Kindly input First Name.</span>
 
   <br />
   <br />
@@ -11,6 +14,9 @@
     <h1 style="font-size: 24px; margin-left: 25px;">Last Name</h1>
     <input style="margin-left: 90px; width: 440px; height: 50px; border-radius: 20px; border: 1px solid black" formControlName="lastName">
   </div>
+  <br />
+  <span *ngIf="(!applyLeaveForm.get('lastName').valid && applyLeaveForm.get('lastName').touched) || (!applyLeaveForm.get('lastName').valid && applyLeaveFormSubmitted)" 
+  style="margin-left: 220px; color: red; font-size: 24px; font-style: italic; font-weight: bold">* Kindly input Last Name.</span>
 
   <br />
   <br />
@@ -26,7 +32,7 @@
   <div style="display: inline-flex">
     <h1 style="font-size: 24px; margin-left: 25px;">From:</h1>
     <select formControlName="fromMonth" style="margin-left: 140px; width: 200px; font-size: 24px; border: 1px solid black;">
-      <option [value]="i + 1" *ngFor="let month of months; let i = index">{{month}}</option>
+      <option [value]="month.value" *ngFor="let month of months; let i = index">{{month.value}}</option>
     </select>
     <select formControlName="fromDay" style="margin-left: 20px; width: 100px; font-size: 24px; border: 1px solid black;">
       <option [value]="i + 1" *ngFor="let item of [].constructor(31); let i = index">{{i + 1}}</option>
@@ -41,7 +47,7 @@
   <div style="display: inline-flex">
     <h1 style="font-size: 24px; margin-left: 25px;">To:</h1>
     <select formControlName="toMonth" style="margin-left: 170px; width: 200px; font-size: 24px; border: 1px solid black;">
-      <option [value]="i + 1" *ngFor="let month of months; let i = index;">{{month}}</option>
+      <option [value]="month.value" *ngFor="let month of months; let i = index;">{{month.value}}</option>
     </select>
     <select formControlName="toDay" style="margin-left: 20px; width: 100px; font-size: 24px; border: 1px solid black;">
       <option [value]="i + 1" *ngFor="let item of [].constructor(31); let i = index">{{i + 1}}</option>
@@ -58,6 +64,9 @@
     <button type="button" style="background-color: #ff8c00; border: none; margin-left: 20px; font-size: 18px; color: white; border-radius: 20px; width: 150px;" (click)="calculateNumberOfDays()">Calculate</button>
     <input style="margin-left: 20px; width: 270px; height: 50px; border-radius: 20px; border: 1px solid black; text-align: center;" disabled=true formControlName="numberOfDays">
   </div>
+  <br />
+  <span *ngIf="!applyLeaveForm.get('numberOfDays').valid && applyLeaveFormSubmitted" 
+  style="margin-left: 220px; color: red; font-size: 24px; font-style: italic; font-weight: bold">* Kindly calculate Number of Day/s.</span>
 
   <br />
   <br />
@@ -65,14 +74,13 @@
     <h1 style="font-size: 24px; margin-left: 25px;">Reason:</h1>
     <textarea style="margin-left: 120px; width: 440px; height: 100px; border: 1px solid black;" placeholder="Please indicate your Reason for Leave." formControlName="reasonOfLeave"></textarea>
   </div>
+  <br />
+  <span *ngIf="(!applyLeaveForm.get('reasonOfLeave').valid && applyLeaveForm.get('reasonOfLeave').touched) || (!applyLeaveForm.get('reasonOfLeave').valid && applyLeaveFormSubmitted)" 
+  style="margin-left: 220px; color: red; font-size: 24px; font-style: italic; font-weight: bold">* Kindly input Reason.</span>
 
   <br />
   <br />
   <div>
     <button type="submit" style="background-color: #ff8c00; border: none; margin-left: 220px; font-size: 24px; color: white; border-radius: 20px; width: 300px; height: 80px;">SUBMIT</button>
   </div>
-
-
-
 </form>
-

@@ -13,8 +13,12 @@ export class LeaveApplicationsPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const JSONObj = {
+          "leaves": []
+    }
     if (window.sessionStorage.getItem('leaves') === null) {
-      window.sessionStorage.setItem('leaves', JSON.stringify(this.leaves))
+      // window.sessionStorage.setItem('leaves', JSON.stringify(this.leaves))
+      window.sessionStorage.setItem('leaves', JSON.stringify(JSONObj))
     }
 
     else {
@@ -85,7 +89,6 @@ export class LeaveApplicationsPageComponent implements OnInit {
       }
     }
   }
-
 
   rejectLeave(element: any, position: number) {
     const confirmRes = window.confirm(`Are you sure you want to reject member: ${element.first_name} ${element.last_name} to have ${element.type_of_leave} leave?`);
