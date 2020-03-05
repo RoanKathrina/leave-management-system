@@ -1,6 +1,7 @@
 <h1 style="margin-left: 20px;">Leave Application Status</h1>
+<h1 style="margin-left: 450px; color: red;" *ngIf="leaves.approved.length == 0 && leaves.rejected.length == 0">No item/s to display.</h1>
 <table style="border-collapse: collapse; margin: 20px">
-  <tr>
+  <tr *ngIf="leaves.approved.length != 0 || leaves.rejected.length != 0">
     <th class="TableHeader">First Name</th>
     <th class="TableHeader">Last Name</th>
     <th class="TableHeader">Type of Leave</th>
