@@ -66,10 +66,12 @@ export class LoginPageComponent implements OnInit {
       }
       else {
         if(username !== 'melody_anne_francisco') {
+          this.service.user.next(username);
           this.router.navigate(['../leave-management-system-page'], {relativeTo: this.route})
         }
         else {
           this.service.isAdminLoggedIn.next(true);
+          this.service.user.next(username);
           this.router.navigate(['../leave-management-system-page'], {relativeTo: this.route})
         }
       }

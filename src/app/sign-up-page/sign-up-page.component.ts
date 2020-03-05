@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AppService } from '../app.service';
 
 import fs_bench_members from '../json/fs_bench_members.json';
 
@@ -15,7 +16,8 @@ export class SignUpPageComponent implements OnInit {
   members = fs_bench_members;
 
   constructor(private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private service: AppService) { }
 
   ngOnInit() {
     this.initForm();
@@ -79,7 +81,8 @@ export class SignUpPageComponent implements OnInit {
             "password": password
           }
           this.members.members.push(JSONObj);
-          window.sessionStorage.setItem('members', JSON.stringify(this.members))
+          window.sessionStorage.setItem('members', JSON.stringify(this.members));
+          this.service.user.next(username);
           this.router.navigate(['../leave-management-system-page'], {relativeTo: this.route});
         }
       }

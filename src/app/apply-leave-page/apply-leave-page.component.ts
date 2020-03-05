@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-import fs_bench_members from '../json/fs_bench_members.json';
+import { AppService } from '../app.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-apply-leave-page',
   templateUrl: './apply-leave-page.component.html',
   styleUrls: ['./apply-leave-page.component.css']
 })
-export class ApplyLeavePageComponent implements OnInit {
+export class ApplyLeavePageComponent implements OnInit, OnDestroy{
 
   applyLeaveForm: FormGroup;
   type_of_leave = ['Sick', 'Vacation', 'Maternity'];
@@ -64,12 +64,19 @@ export class ApplyLeavePageComponent implements OnInit {
   ];
   years = ['2020', '2021', '2022', '2023', '2024', '2025'];
   applyLeaveFormSubmitted: boolean = false;
-  fs_bench_members = fs_bench_members;
+  members;
+  user;
+  userSubject: Subscription;
 
-  constructor() { }
+  constructor(private service: AppService) { }
 
   ngOnInit() {
+    this.userSubject = this.service.user.subscribe(userLoggedIn => this.user = userLoggedIn);
     this.initForm();
+  }
+
+  ngOnDestroy() {
+    this.userSubject.unsubscribe();
   }
 
   initForm() {
@@ -95,16 +102,15 @@ export class ApplyLeavePageComponent implements OnInit {
     this.applyLeaveFormSubmitted = true;
 
     if(this.applyLeaveForm.invalid === false) {
-      // Check if the firstName_lastName is in the fs_bench_members.json
-        // if no, prompt error: firstName lastName is not in the FS Bench Members Database.
+      // Check if the firstName_lastName is in the equal to user
+        // if no, prompt error: firstName lastName is incorrect. Kindly input the correct First Name, and Last Name.
         // if yes, save the leave in the sessionStorage.
       const firstName = this.applyLeaveForm.get('firstName').value;
       const lastName = this.applyLeaveForm.get('lastName').value;
       const memberName = (firstName.replace(/ /g,"_") + '_' + lastName.replace(/ /g,"_")).toLowerCase();
 
-      let member = this.fs_bench_members.members.find(item => item.username === memberName);
-      if (member === undefined) {
-        window.alert(`Error: ${firstName} ${lastName} is not found in the FS Bench Database.`);
+      if (memberName !== this.user) {
+        window.alert(`Error: ${firstName} ${lastName} is incorrect. Kindly input the correct First Name, and Last Name.`);
         return;
       }
       else {
@@ -146,7 +152,8 @@ export class ApplyLeavePageComponent implements OnInit {
           console.log(JSONObj);
           window.sessionStorage.setItem('leaves', JSON.stringify(JSONObj));
         }
-      this.applyLeaveForm.reset()
+      this.applyLeaveFormSubmitted = false;
+      this.applyLeaveForm.reset();
       }
     }
     else {

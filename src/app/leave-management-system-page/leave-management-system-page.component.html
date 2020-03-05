@@ -27,7 +27,7 @@
           <h1 style="overflow-wrap: break-word; width: 300px"><a>Leave Application Status</a></h1>
         </div>
 
-        <div style="display: flex; margin-left: 60px; cursor: pointer" (click)="setMenuOption('log_out');">
+        <div style="display: flex; margin-left: 60px; cursor: pointer" (click)="onLogOut();">
           <img src="https://i.ya-webdesign.com/images/tech-buttons-png-3.png" style="height: 60px;">
           <h1 style="margin-left: 30px"><a>Log Out</a></h1>
         </div>
@@ -36,13 +36,19 @@
 
     <div style="background-color: white; height: 1900px; width: 1400px; margin-left: 0px">
       <div *ngIf="showSideDrawer && menuOption == 'leave_applications'">
-        <app-leave-applications-page></app-leave-applications-page>
+        <app-leave-applications-page *ngIf="isAdminLoggedIn"></app-leave-applications-page>
+        <h1 style="margin-left: 20px; color: red;" *ngIf="!isAdminLoggedIn">You are not authorized to view this page. Kindy log in as Administrator.</h1>
       </div>
 
       <div *ngIf="showSideDrawer && menuOption == 'apply_leave'">
-        <app-apply-leave-page></app-apply-leave-page>
+        <app-apply-leave-page *ngIf="user != null"></app-apply-leave-page>
+        <h1 style="margin-left: 20px; color: red;" *ngIf="user == null">Kindly log in to view this page.</h1>
       </div>
 
+      <div *ngIf="showSideDrawer && menuOption == 'leave_application_status'">
+        <app-leave-application-status-page *ngIf="user != null"></app-leave-application-status-page>
+        <h1 style="margin-left: 20px; color: red;" *ngIf="user == null">Kindly log in to view this page.</h1>
+      </div>
     </div>
   </div>
 

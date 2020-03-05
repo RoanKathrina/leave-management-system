@@ -1,0 +1,20 @@
+table, th, td {
+  border: 3px solid black;
+}
+
+.TableHeader {
+  font-size: 24px; 
+  width: 200px; 
+  background-color: #ff8c00; 
+  color: white;
+}
+
+.TableCell {
+ font-size: 18px; 
+ text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(265, 155, 0, 0.1)
+}
+

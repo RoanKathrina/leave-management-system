@@ -1,0 +1,33 @@
+<h1 style="margin-left: 20px;">Leave Application Status</h1>
+<table style="border-collapse: collapse; margin: 20px">
+  <tr>
+    <th class="TableHeader">First Name</th>
+    <th class="TableHeader">Last Name</th>
+    <th class="TableHeader">Type of Leave</th>
+    <th class="TableHeader">From Date</th>
+    <th class="TableHeader">To Date</th>
+    <th class="TableHeader">Number of Day/s</th>
+    <th class="TableHeader">Reason</th>
+    <th class="TableHeader">Status</th>
+  </tr>
+  <tr *ngFor="let leave of leaves.approved;">
+    <td class="TableCell">{{leave.first_name}}</td>
+    <td class="TableCell">{{leave.last_name}}</td>
+    <td class="TableCell">{{leave.type_of_leave}}</td>
+    <td class="TableCell">{{leave.from_date}}</td>
+    <td class="TableCell">{{leave.to_date}}</td>
+    <td class="TableCell">{{leave.number_of_days}}</td>
+    <td class="TableCell">{{leave.reason}}</td>
+    <td class="TableCell" style="color: green; font-weight: bold;">Approved</td>
+  </tr>
+  <tr *ngFor="let leave of leaves.rejected;">
+    <td class="TableCell">{{leave.first_name}}</td>
+    <td class="TableCell">{{leave.last_name}}</td>
+    <td class="TableCell">{{leave.type_of_leave}}</td>
+    <td class="TableCell">{{leave.from_date}}</td>
+    <td class="TableCell">{{leave.to_date}}</td>
+    <td class="TableCell">{{leave.number_of_days}}</td>
+    <td class="TableCell">{{leave.reason}}</td>
+    <td class="TableCell" style="color: red; font-weight: bold;">Rejected</td>
+  </tr>
+</table>
