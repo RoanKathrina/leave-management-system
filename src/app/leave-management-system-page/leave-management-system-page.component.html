@@ -4,7 +4,7 @@
       <img src="https://www.pngjoy.com/pngl/131/2663889_group-of-people-icon-avatar-group-icon-png.png" style="height: 100px;">
       <h1 style="margin-left: 20px; color: white; font-size: 42px;">Leave Management System</h1>
     </div>
-    <div style="margin-right: 20px; cusror: pointer;" tappable (click)="toggleSideDrawer()">
+    <div style="margin-right: 20px; cursor: pointer;" tappable (click)="toggleSideDrawer()">
       <img src="https://cdn.icon-icons.com/icons2/916/PNG/512/Menu_icon_icon-icons.com_71858.png" style="height: 100px;">
     </div>
   </div>
@@ -12,9 +12,9 @@
   <div style="display: flex">
     <ng-container *ngIf="showSideDrawer">
       <div class="SideDrawer">
-        <div style="display: flex; margin-left: 50px; cursor: pointer" tappable (click)="setMenuOption('leave_applications')">
-          <img src="https://png.pngtree.com/svg/20161229/application_for_leave_729847.png" style="height: 100px">
-          <h1><a>Leave Applications</a></h1>
+        <div style="display: flex; margin-left: 50px; cursor: pointer;" tappable (click)="setMenuOption('leave_applications')" [style.pointer-events]="isAdminLoggedIn == true ? 'auto' : 'none'">
+          <img src="https://png.pngtree.com/svg/20161229/application_for_leave_729847.png" style="height: 100px;" [style.opacity]="isAdminLoggedIn === true ? '1' : '0.5'">
+          <h1 [style.opacity]="isAdminLoggedIn === true ? '1' : '0.5'"><a>Leave Applications</a></h1>
         </div>
       
         <div style="display: flex; margin-left: 50px; cursor: pointer" (click)="setMenuOption('apply_leave')">
